@@ -32,6 +32,7 @@
 
 #include "../casadi_options.hpp"
 #include "../profiling.hpp"
+#include "../timing.hpp"
 
 #include <cctype>
 #ifdef WITH_DL
@@ -1239,9 +1240,13 @@ namespace casadi {
 
       // Star coloring if symmetric
       log("FunctionInternal::getPartition starColoring");
+      const timer time0 = getTimerTime();
       D1 = A.starColoring();
-      casadi_msg("Star coloring completed: " << D1.size2() << " directional derivatives needed ("
-                 << A.size1() << " without coloring).");
+      const diffTime diff = diffTimers(getTimerTime(), time0);
+      if (verbose())
+        casadi_msg("Star coloring completed in " << diff.proc << " seconds: "
+                   << D1.size2() << " directional derivatives needed ("
+                   << A.size1() << " without coloring).");
 
     } else {
       casadi_assert(numDerForward()>0 || numDerReverse()>0);
