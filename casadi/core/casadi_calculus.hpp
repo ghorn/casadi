@@ -562,6 +562,7 @@ namespace casadi {
   template<>      struct BinaryChecker<OP_ATAN2>{ static const bool check=true;};
   template<>      struct BinaryChecker<OP_IF_ELSE_ZERO>{ static const bool check=true;};
   template<>      struct BinaryChecker<OP_COPYSIGN>{ static const bool check=true;};
+  template<>      struct BinaryChecker<OP_FMOD>{ static const bool check=true;};
   ///@}
 
   /// Simple assignment

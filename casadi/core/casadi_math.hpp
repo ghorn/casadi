@@ -400,6 +400,7 @@ inline void casadi_math<T>::derF(unsigned char op, const T& x, const T& y, T& f,
 template<typename T>
 inline int casadi_math<T>::ndeps(unsigned char op) {
 #define CASADI_MATH_BINARY_BUILTIN \
+    case OP_FMOD:\
     case OP_ADD:\
     case OP_SUB:\
     case OP_MUL:\
